@@ -234,7 +234,7 @@ const SignInPage = () => {
           height="203px"
           width="203px"
         />
-        <h2>Buy in H&A Kingdoms</h2>
+        <h2>Buy in HALD restaurant</h2>
       </WrapperContainerRight>
     </div>
   </div>
