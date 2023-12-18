@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './Dashboard.css';
+import './style.css';
 
-function Dashboard() {
+const AdminPage = () => {
     const [style, setStyle] = useState("navbar-nav bg-gradient-primary sidebar sidebar-dark accordion");
 
     const changeStyle = () => {
@@ -451,4 +451,4 @@ function Dashboard() {
     )
 }
 
-export default Dashboard;
+export default AdminPage;
