@@ -39,8 +39,9 @@ function SignIn(props) {
       //   const query = "?" + queryString.stringify(params);
 
       // const response = await User.Get_Detail_User(query)
-      const response = await User.Login(params);
-
+      const response = await User.Login(params)
+        .then((res) => res)
+      console.log(response)
       if (response.status === "error") {
         if (response.message === "Please enter enough information") {
           set_error_username(true);
@@ -48,19 +49,19 @@ function SignIn(props) {
         } else if (response.message === "Email or password is not matched") {
           set_error_username(false);
           set_error_password(true);
-        } else {
-          console.log(response);
-
-          //   const action = addSession(response._id);
-          //   dispatch(action);
-
-          //   sessionStorage.setItem("id_user", response._id);
-
-          //   const action_count_change = changeCount(count_change);
-          //   dispatch(action_count_change);
-
-          //   set_redirect(true);
         }
+      } else {
+        console.log(response);
+
+        const action = addSession(response.id);
+        dispatch(action);
+
+        sessionStorage.setItem("id_user", response.id);
+
+        const action_count_change = changeCount(count_change);
+        dispatch(action_count_change);
+
+        set_redirect(true);
       }
     };
 

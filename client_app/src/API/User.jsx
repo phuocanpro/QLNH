@@ -19,7 +19,8 @@ const User = {
 
   Login: async (data) => {
     const url = "/api/login";
-    return axiosClient.post(url, data);
+    console.log('called')
+    return axiosClient.post(url, data)
   },
 
   Get_Detail_User: (query) => {
@@ -27,8 +28,8 @@ const User = {
     return axiosClient.get(url);
   },
 
-  Post_User: (data) => {
-    const url = "/api/User";
+  Register: (data) => {
+    const url = "/api/register";
     return axiosClient.post(url, data);
   },
 };
