@@ -1,25 +1,20 @@
 // import React, { useEffect, useRef, useState } from "react";
-// import { WrapperHeader, WrapperUploadFile } from "./style";
 // import { Button, Form, message } from "antd";
-// import TableComponent from "../TableComponent/TableComponent";
+// import TableComponent from "./TableComponent";
 // import { useSelector } from "react-redux";
-// import { useMutationHooks } from "../../hooks/userMutationHook";
-// import * as UserService from "../../services/UserService.js";
 // import { useQuery } from "@tanstack/react-query";
 // import {
 //   DeleteOutlined,
 //   EditOutlined,
 //   SearchOutlined,
 // } from "@ant-design/icons";
-// import ModalComponent from "../ModalComponent/ModalComponent";
-// import InputComponent from "../InputComponent/InputComponent";
-// import DrawerComponent from "../DrawerComponent/DrawerComponent";
-// import { getBase64 } from "../../utils";
+// import ModalComponent from ".ModalComponent";
+// import InputComponent from ".InputComponent";
+// import DrawerComponent from ".DrawerComponent";
 
 // const AdminUser = () => {
 //   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
 //   const [rowSelected, setRowSelected] = useState("");
-//   const [isLoadingUpdate, setIsLoadingUpdate] = useState(false);
 //   const [isModalOpenDelete, setIsModalOpenDelete] = useState(false);
 
 //   const user = useSelector((state) => state?.user);
@@ -366,7 +361,7 @@
 
 //   return (
 //     <div style={{ marginTop: "10px" }}>
-//       <WrapperHeader>Manager Users</WrapperHeader>
+//       <h1 style={{ color: "#fff", "font-size": "14px" }}>Manager Users</h1>
 //       <div style={{ marginTop: "20px" }}>
 //         <TableComponent
 //           handleDeleteMany={handleDeleteManyUsers}
