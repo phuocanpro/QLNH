@@ -21,9 +21,10 @@ function User(props) {
     const query = "?" + queryString.stringify(filter);
 
     const fetchAllData = async () => {
-      const response = await userAPI.getAllUsers();
-      setUsers(response.users);
-      setTotalPage(response.totalPage);
+      const users = await userAPI.getAllUsers();
+      console.log("res",users);
+      setUsers(users);
+      // setTotalPage(response.totalPage);
     };
     fetchAllData();
   }, [filter]);
@@ -55,7 +56,8 @@ function User(props) {
       });
     }
   };
-
+// <th>Permission</th>
+//<td>{user.id_permission.permission}</td>
   return (
     <div className="page-wrapper">
       <div className="container-fluid">
@@ -77,23 +79,29 @@ function User(props) {
                         <th>ID</th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Permission</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Role</th>
+                        
                         <th>Action</th>
                       </tr>
                     </thead>
 
                     <tbody>
                       {users &&
-                        users.map((value, index) => (
-                          <tr key={index}>
-                            <td>{value._id}</td>
-                            <td>{value.fullname}</td>
-                            <td>{value.email}</td>
-                            <td>{value.id_permission.permission}</td>
+                        users.map((user) => (
+                          <tr>
+                            <td>{user.id}</td>
+                            <td>{user.name}</td>
+                            <td>{user.email}</td>
+                            <td>{user.phone}</td>
+                            <td>{user.address}</td>
+                            <td>{user.role}</td>
+                            
                             <td>
                               <div className="d-flex">
                                 <Link
-                                  to={"user/update/" + value._id}
+                                  to={"user/update/" + user.id}
                                   className="btn btn-success mr-1"
                                 >
                                   Update
@@ -102,7 +110,7 @@ function User(props) {
                                 <button
                                   type="button"
                                   style={{ cursor: "pointer", color: "white" }}
-                                  onClick={() => handleDelete(value)}
+                                  onClick={() => handleDelete(user)}
                                   className="btn btn-danger"
                                 >
                                   Delete

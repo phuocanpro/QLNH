@@ -19,7 +19,7 @@ const User = {
 
   Login: async (data) => {
     const url = "/api/login";
-    console.log('called')
+    // console.log('called')
     return axiosClient.post(url, data)
   },
 

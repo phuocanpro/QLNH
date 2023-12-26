@@ -8,7 +8,7 @@ import { AuthContext } from "../context/Auth";
 
 function Login(props) {
   const { addLocal, jwt, user } = useContext(AuthContext);
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [validationMsg, setValidationMsg] = useState("");
   const { handleSubmit } = useForm();
@@ -16,7 +16,7 @@ function Login(props) {
 
   const validateAll = () => {
     let msg = {};
-    if (isEmpty(email)) {
+    if (isEmpty(username)) {
       msg.email = "Email không được để trống";
     }
     if (isEmpty(password)) {
@@ -34,7 +34,7 @@ function Login(props) {
 
   const login = async () => {
     const user = {
-      email: email,
+      username: username,
       password: password,
     };
     try {
@@ -82,18 +82,18 @@ function Login(props) {
                 <div className="col-lg-12">
                   <div className="form-group">
                     <label className="text-dark" htmlFor="uname">
-                      Email
+                      UserName
                     </label>
                     <input
                       className="form-control"
-                      name="email"
+                      name="username"
                       type="text"
-                      placeholder="Enter your email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Enter your username"
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
                     />
                     <p className="form-text text-danger">
-                      {validationMsg.email}
+                      {validationMsg.username}
                     </p>
                   </div>
                 </div>
