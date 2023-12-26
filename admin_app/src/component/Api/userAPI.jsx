@@ -5,8 +5,8 @@ const userAPI = {
   //     const url = `/admin/user${query}`
   //     return axiosClient.get(url)
   // },
-  getAllUsers: () => {
-    const url = `/api/getAll`;
+  getAllUsers: (query) => {
+    const url = `/api/getAll${query}`;
     return axiosClient.get(url);
   },
   details: (id) => {
@@ -21,9 +21,9 @@ const userAPI = {
     const url = `/admin/user/loginnv`;
     return axiosClient.post(url, data);
   },
-  create: (query) => {
-    const url = `/admin/user/create${query}`;
-    return axiosClient.post(url);
+  create: (data) => {
+    const url = `/api/register/`;
+    return axiosClient.post(url, data);
   },
   update: (query) => {
     const url = `/admin/user/update${query}`;

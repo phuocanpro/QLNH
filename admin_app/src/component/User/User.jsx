@@ -21,10 +21,10 @@ function User(props) {
     const query = "?" + queryString.stringify(filter);
 
     const fetchAllData = async () => {
-      const users = await userAPI.getAllUsers();
-      console.log("res",users);
+      const users = await userAPI.getAllUsers(query);
+      console.log("res", users);
       setUsers(users);
-      // setTotalPage(response.totalPage);
+      setTotalPage(users.totalPage);
     };
     fetchAllData();
   }, [filter]);
@@ -42,6 +42,7 @@ function User(props) {
       page: "1",
       search: value,
     });
+    console.log(value);
   };
 
   const handleDelete = async (value) => {
@@ -56,8 +57,8 @@ function User(props) {
       });
     }
   };
-// <th>Permission</th>
-//<td>{user.id_permission.permission}</td>
+  // <th>Permission</th>
+  //<td>{user.id_permission.permission}</td>
   return (
     <div className="page-wrapper">
       <div className="container-fluid">
@@ -82,7 +83,7 @@ function User(props) {
                         <th>Phone</th>
                         <th>Address</th>
                         <th>Role</th>
-                        
+
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -97,7 +98,7 @@ function User(props) {
                             <td>{user.phone}</td>
                             <td>{user.address}</td>
                             <td>{user.role}</td>
-                            
+
                             <td>
                               <div className="d-flex">
                                 <Link

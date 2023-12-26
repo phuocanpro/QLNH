@@ -14,22 +14,23 @@ function Login(props) {
   const { handleSubmit } = useForm();
   let history = useHistory();
 
-  const validateAll = () => {
-    let msg = {};
-    if (isEmpty(username)) {
-      msg.email = "Email không được để trống";
-    }
-    if (isEmpty(password)) {
-      msg.password = "Password không được để trống";
-    }
-    setValidationMsg(msg);
-    if (Object.keys(msg).length > 0) return false;
-    return true;
-  };
+  // const validateAll = () => {
+  //   let msg = {};
+  //   if (isEmpty(username)) {
+  //     msg.email = "Email không được để trống";
+  //   }
+  //   if (isEmpty(password)) {
+  //     msg.password = "Password không được để trống";
+  //   }
+  //   setValidationMsg(msg);
+  //   if (Object.keys(msg).length > 0) return false;
+  //   return true;
+  // };
 
   const handleLogin = () => {
-    const isValid = validateAll();
-    if (isValid) return login();
+    // // const isValid = validateAll();
+    // if (isValid)
+    return login();
   };
 
   const login = async () => {
@@ -37,22 +38,16 @@ function Login(props) {
       username: username,
       password: password,
     };
-    try {
-      const response = await userAPI.login(user);
-      console.log(response);
-
+    const response = await userAPI.login(user);
+    if (response.status === "error") {
+      setValidationMsg(response.message);
+    } else if (response.user.role === "admin") {
       addLocal(response.jwt, response.user);
-
-      if (response.user.role === "admin") {
-        history.push("/user");
-        return <Redirect to="/user" />;
-      } else {
-        history.push("/customer");
-        return <Redirect to="/customer" />;
-      }
-    } catch (error) {
-      console.error("Login error:", error);
-      setValidationMsg({ api: "Đăng nhập thất bại. Vui lòng thử lại." });
+      history.push("/user");
+      return <Redirect to="/user" />;
+    } else {
+      history.push("/");
+      return <Redirect to="/" />;
     }
   };
 
@@ -76,7 +71,6 @@ function Login(props) {
             </div>
             <h2 className="mt-3 text-center">Sign In</h2>
 
-            {<p className="form-text text-danger">{validationMsg.api}</p>}
             <form className="mt-4" onSubmit={handleSubmit(handleLogin)}>
               <div className="row">
                 <div className="col-lg-12">
@@ -92,9 +86,6 @@ function Login(props) {
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
                     />
-                    <p className="form-text text-danger">
-                      {validationMsg.username}
-                    </p>
                   </div>
                 </div>
                 <div className="col-lg-12">
@@ -110,11 +101,10 @@ function Login(props) {
                       onChange={(e) => setPassword(e.target.value)}
                       placeholder="Enter your password"
                     />
-                    <p className="form-text text-danger">
-                      {validationMsg.password}
-                    </p>
                   </div>
+                  {<p className="form-text text-danger">{validationMsg}</p>}
                 </div>
+
                 <div className="col-lg-12 text-center">
                   <button type="submit" className="btn btn-block btn-dark">
                     Sign In
