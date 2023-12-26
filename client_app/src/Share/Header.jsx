@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import Cart from "../API/CartAPI";
 import User from "../API/User";
-import logo from "../Image/1.jpg";
+import logo from "../Image/logof.png";
 import { addUser, deleteCart } from "../Redux/Action/ActionCart";
 import { changeCount } from "../Redux/Action/ActionCount";
 import { addSession, deleteSession } from "../Redux/Action/ActionSession";
@@ -210,8 +210,8 @@ function Header(props) {
           <div className="row">
             <div className="col-lg-3 col-md-4">
               <li>
-                <span>Telephone Enquiry:</span>
-                <a href="#">(+123) 123 321 345</a>
+                <span>Telephone:</span>
+                <a href="#">0826.519.466</a>
               </li>
             </div>
             <div className="col-lg-9 col-md-8">
@@ -228,14 +228,20 @@ function Header(props) {
                         {user.fullname}
                       </span>
                     ) : (
-                      <span
+                      <button
                         data-toggle="collapse"
                         data-target="#collapseExample"
                         aria-expanded="false"
                         aria-controls="collapseExample"
+                        style={{
+                          background: "#FF0000",
+                          color: '#fff',
+                          height:'35px',
+                          width: '100px'
+                        }}
                       >
-                        Setting
-                      </span>
+                        |||
+                      </button>
                     )}
                   </div>
                   <div className="ul_setting">
@@ -262,6 +268,9 @@ function Header(props) {
                         <li className="li_setting">
                           <Link to="/signin">Sign In</Link>
                         </li>
+                        <li className="li_setting">
+                          <Link to="/signup">Sign Up</Link>
+                        </li>
                       </ul>
                     )}
                   </div>
@@ -277,7 +286,7 @@ function Header(props) {
             <div className="col-lg-3">
               <div className="logo pb-sm-30 pb-xs-30">
                 <Link to="/">
-                  <img src={logo} style={{ width: "13rem" }} />
+                  <img src={logo} style={{ width: "150px", height:"90px" }} />
                 </Link>
               </div>
             </div>
