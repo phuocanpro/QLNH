@@ -225,7 +225,7 @@ function Header(props) {
                         aria-expanded="false"
                         aria-controls="collapseExample"
                       >
-                        {user.fullname}
+                        {user.name}
                       </span>
                     ) : (
                       <button
@@ -235,9 +235,9 @@ function Header(props) {
                         aria-controls="collapseExample"
                         style={{
                           background: "#FF0000",
-                          color: '#fff',
-                          height:'35px',
-                          width: '100px'
+                          color: "#fff",
+                          height: "35px",
+                          width: "100px",
                         }}
                       >
                         |||
@@ -257,6 +257,11 @@ function Header(props) {
                         <li className="li_setting">
                           <Link to="/history">Order Status</Link>
                         </li>
+                        {user?.role === "admin" && (
+                          <li className="li_setting">
+                            <Link to="/admin">Management</Link>
+                          </li>
+                        )}
                         <li className="li_setting">
                           <a onClick={handler_logout} href="#">
                             Log Out
@@ -286,7 +291,7 @@ function Header(props) {
             <div className="col-lg-3">
               <div className="logo pb-sm-30 pb-xs-30">
                 <Link to="/">
-                  <img src={logo} style={{ width: "150px", height:"90px" }} />
+                  <img src={logo} style={{ width: "150px", height: "90px" }} />
                 </Link>
               </div>
             </div>

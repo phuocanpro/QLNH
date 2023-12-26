@@ -8,7 +8,7 @@ const User = {
   },
 
   Get_User: (id) => {
-    const url = `/api/User/${id}`;
+    const url = `/api/getUser/${id}`;
     return axiosClient.get(url);
   },
 
@@ -20,7 +20,7 @@ const User = {
   Login: async (data) => {
     const url = "/api/login";
     // console.log('called')
-    return axiosClient.post(url, data)
+    return axiosClient.post(url, data);
   },
 
   Get_Detail_User: (query) => {
