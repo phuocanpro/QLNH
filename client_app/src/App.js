@@ -29,7 +29,6 @@ import OrderFail from "./Order/OrderFail";
 // import Search from "./Search/Search";
 import { lazy, Suspense } from "react";
 import OrderMomo from "./Order/OrderMomo";
-// import DetailEvent from "./About/DetailEvent";
 
 const Home = lazy(() => {
   return new Promise((resolve) => {
@@ -64,18 +63,6 @@ const Cart = lazy(() => {
 const Favorite = lazy(() => {
   return new Promise((resolve) => {
     setTimeout(() => resolve(import("./Favorite/Favorite")), 2000);
-  });
-});
-
-const Event = lazy(() => {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(import("./Event/Event")), 2000);
-  });
-});
-
-const DetailEvent = lazy(() => {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(import("./Event/DetailEvent")), 2000);
   });
 });
 
@@ -142,10 +129,6 @@ function App() {
             <Route path="/cart" component={Cart} />
             <Route path="/checkout" component={Checkout} />
             <Route path="/favorite" component={Favorite} />
-
-            <Route exact path="/event" component={Event} />
-            <Route path="/event/:id" component={DetailEvent} />
-
 
             <Route path="/contact" component={Contact} />
             <Route path="/signin" component={SignIn} />

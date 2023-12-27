@@ -8,7 +8,7 @@ import { addUser, deleteCart } from "../Redux/Action/ActionCart";
 import { changeCount } from "../Redux/Action/ActionCount";
 import { addSession, deleteSession } from "../Redux/Action/ActionSession";
 import queryString from "query-string";
-import Product from "../API/Product";
+import Product from "../API/Dishes";
 import { addSearch } from "../Redux/Action/ActionSearch";
 import CartsLocal from "./CartsLocal";
 
@@ -436,43 +436,6 @@ function Header(props) {
                       </li>
                       <li className="megamenu-holder">
                         <Link to="/shop/all">Menu</Link>
-                        <ul class="megamenu hb-megamenu">
-                          <li>
-                            <Link to="/shop/all">Male</Link>
-                            <ul>
-                              {male &&
-                                male.map((value) => (
-                                  <li key={value._id}>
-                                    <Link
-                                      to={`/shop/${value._id}`}
-                                      style={{ cursor: "pointer" }}
-                                    >
-                                      {value.category}
-                                    </Link>
-                                  </li>
-                                ))}
-                            </ul>
-                          </li>
-                          <li>
-                            <Link to="/shop">Female</Link>
-                            <ul>
-                              {female &&
-                                female.map((value) => (
-                                  <li key={value._id}>
-                                    <Link
-                                      to={`/shop/${value._id}`}
-                                      style={{ cursor: "pointer" }}
-                                    >
-                                      {value.category}
-                                    </Link>
-                                  </li>
-                                ))}
-                            </ul>
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <Link to="/event">Event</Link>
                       </li>
                       <li>
                         <Link to="/contact">Contact</Link>

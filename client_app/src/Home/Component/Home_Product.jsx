@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import Product from '../../API/Product';
+import Product from '../../API/Dishes';
 import queryString from 'query-string'
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
