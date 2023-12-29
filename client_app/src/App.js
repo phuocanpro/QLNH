@@ -97,6 +97,12 @@ const SignUp = lazy(() => {
   });
 });
 
+const Admin = lazy(() => {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(import("./AdminPage/AdminPage")), 2000);
+  });
+});
+
 const History = lazy(() => {
   return new Promise((resolve) => {
     setTimeout(() => resolve(import("./History/History")), 2000);
@@ -146,10 +152,12 @@ function App() {
             <Route exact path="/event" component={Event} />
             <Route path="/event/:id" component={DetailEvent} />
 
-
             <Route path="/contact" component={Contact} />
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp} />
+
+            <Route path="/admin" component={Admin} />
+
             <Route path="/success" component={OrderSuccess} />
             <Route path="/fail" component={OrderFail} />
             <Route path="/momo" component={OrderMomo} />
