@@ -261,6 +261,11 @@ function Header(props) {
                         <li className="li_setting">
                           <Link to="/history">Order Status</Link>
                         </li>
+                        {user?.role === "admin" && (
+                          <li className="li_setting">
+                            <Link to="/admin">Management</Link>
+                          </li>
+                        )}
 
                         <li className="li_setting">
                           <a onClick={handler_logout} href="#">
